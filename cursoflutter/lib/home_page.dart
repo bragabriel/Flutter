@@ -1,5 +1,6 @@
   //StatefulWidget = Dinamico -> Pode ser modificado
-  import 'package:flutter/cupertino.dart';
+  import 'package:cursoflutter/app_controller.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget{
@@ -20,18 +21,14 @@ class HomePageState extends State<HomePage>{
     return Scaffold(
       appBar: AppBar(
         title: Text('Home Page'),
+        
+        //botões que ficam na lateral direita
+        actions: [
+          CustomSwitch(),
+        ],
       ),
-      body: Container(
-        height: 200,
-        width: 200,
-        color: Colors.black,
-        child: Center(
-          child: Container(
-            height: 100,
-            width: 100,
-            color: Colors.green,
-          ),
-        ),
+      body: Center(
+        child: CustomSwitch(),
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
@@ -42,5 +39,18 @@ class HomePageState extends State<HomePage>{
         },),
       
     );
+  }
+}
+
+class CustomSwitch extends StatelessWidget {
+  const CustomSwitch({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Switch(
+            value: AppController.instance.isDartTheme, 
+            onChanged: (value){
+            AppController.instance.changeTheme();
+          });
   }
 }
