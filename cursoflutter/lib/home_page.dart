@@ -21,6 +21,18 @@ class HomePageState extends State<HomePage>{
       appBar: AppBar(
         title: Text('Home Page'),
       ),
+      body: Container(
+        height: 200,
+        width: 200,
+        color: Colors.black,
+        child: Center(
+          child: Container(
+            height: 100,
+            width: 100,
+            color: Colors.green,
+          ),
+        ),
+      ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         onPressed: (){
@@ -28,13 +40,7 @@ class HomePageState extends State<HomePage>{
             counter++; //necessario dizer que o estado vai ser modificado e precisa ser reconstuido
           });
         },),
-      body: Center(
-        child: GestureDetector(
-          child: Text('Contador: $counter', style: TextStyle(fontSize: 20),), onTap: (){
-          setState(() {
-            counter++; //necessario dizer que o estado vai ser modificado e precisa ser reconstuido
-          });
-        }))
+      
     );
   }
 }
