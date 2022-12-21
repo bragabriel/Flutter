@@ -1,5 +1,6 @@
   //StatefulWidget = Dinamico -> Pode ser modificado
   import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget{
     @override
@@ -16,12 +17,24 @@ class HomePageState extends State<HomePage>{
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return Container(
-        child: Center(child: GestureDetector(child: Text('Contador: $counter'), onTap: (){
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Home Page'),
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: (){
+          setState(() {
+            counter++; //necessario dizer que o estado vai ser modificado e precisa ser reconstuido
+          });
+        },),
+      body: Center(
+        child: GestureDetector(
+          child: Text('Contador: $counter', style: TextStyle(fontSize: 20),), onTap: (){
           setState(() {
             counter++; //necessario dizer que o estado vai ser modificado e precisa ser reconstuido
           });
         }))
-      ); 
+    );
   }
 }
