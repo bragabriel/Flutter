@@ -1,5 +1,6 @@
 //StateLess = Estatico -> Não pode ser modificado
 import 'package:cursoflutter/app_controller.dart';
+import 'package:cursoflutter/login_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -20,7 +21,7 @@ class AppWidget extends StatelessWidget {
             //Se for false, retorna o light
             brightness: AppController.instance.isDartTheme ? Brightness.dark : Brightness.light,
           ),
-          home: HomePage(),
+          home: LoginPage(),
         );
       },
     );
