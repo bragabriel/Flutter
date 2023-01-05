@@ -1,3 +1,4 @@
+import 'package:cursoflutter/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -55,7 +56,8 @@ class _LoginPageState extends State<LoginPage> {
               ElevatedButton(
                 onPressed:() {
                   if(email == 'teste@teste.com' && password == '123'){
-                    print('correto');
+                    //Login correto
+                    Navigator.of(context).pushReplacementNamed('/home');
                   }else{
                     print('login inválido');
                   }
