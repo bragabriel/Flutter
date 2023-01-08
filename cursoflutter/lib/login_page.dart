@@ -15,10 +15,8 @@ class _LoginPageState extends State<LoginPage> {
   String email = '';
   String password = '';
   
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: SingleChildScrollView(
+  Widget _body(){
+    return SingleChildScrollView(
         child: SizedBox(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
@@ -74,7 +72,23 @@ class _LoginPageState extends State<LoginPage> {
               ]),
           ),
         ),
-      ),
+      );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Stack( //Vai para trás, como um background
+        children: [
+          SizedBox(
+            height: MediaQuery.of(context).size.height, //pegando o tamanho da tela em si
+
+            child: Image.asset('assets/images/wallpaper.png', fit: BoxFit.cover,)
+            ),
+            Container(color: Colors.black.withOpacity(0.3)), //diminuindo a opacidade
+          _body(),
+        ],
+      )
     );
   }
 }
