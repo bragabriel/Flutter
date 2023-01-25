@@ -20,7 +20,18 @@ main(){
 
     when(repository.fetchTodos()).thenAnswer((realInvocation) async => [TodoModel()]);
 
+    expect(controller.state, HomeState.start);
     await controller.start();
+    expect(controller.state, HomeState.success);
     expect(controller.todos.isNotEmpty, true);
+  });
+
+    test('deve modificar o estado para error se a requisição falhar', () async {
+
+    when(repository.fetchTodos()).thenThrow((Exception()) async => [TodoModel()]);
+
+    expect(controller.state, HomeState.start);
+    await controller.start();
+    expect(controller.state, HomeState.error);
   });
 }
